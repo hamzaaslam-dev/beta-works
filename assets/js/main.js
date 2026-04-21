@@ -77,27 +77,7 @@
     counters.forEach((el) => cio.observe(el));
   }
 
-  /* ---------- Custom cursor ---------- */
-  const dot = document.querySelector('.cursor-dot');
-  const ring = document.querySelector('.cursor-ring');
-  if (dot && ring && matchMedia('(pointer:fine)').matches) {
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    window.addEventListener('pointermove', (e) => {
-      mx = e.clientX; my = e.clientY;
-      dot.style.transform = `translate(${mx}px, ${my}px)`;
-    });
-    (function loop() {
-      rx += (mx - rx) * 0.18;
-      ry += (my - ry) * 0.18;
-      ring.style.transform = `translate(${rx}px, ${ry}px)`;
-      requestAnimationFrame(loop);
-    })();
-    const hoverables = document.querySelectorAll('a, button, .service-card, summary, input, textarea, select, .project');
-    hoverables.forEach((el) => {
-      el.addEventListener('pointerenter', () => document.body.classList.add('cursor-hover'));
-      el.addEventListener('pointerleave', () => document.body.classList.remove('cursor-hover'));
-    });
-  }
+  /* ---------- Custom cursor: disabled (native cursor feels instant) ---------- */
 
   /* ---------- Magnetic buttons ---------- */
   document.querySelectorAll('[data-magnetic]').forEach((el) => {

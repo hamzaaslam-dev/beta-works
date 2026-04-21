@@ -8,7 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" /></noscript>
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%237c5cff'/%3E%3Cstop offset='0.5' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%23ff3cac'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Crect x='8' y='8' width='16' height='16' rx='4' fill='%23070712'/%3E%3Crect x='12' y='12' width='8' height='8' rx='2' fill='url(%23g)'/%3E%3C/svg%3E" />
 </head>
@@ -88,9 +90,11 @@
       <a class="project-featured" data-category="shopify" href="contact.html" data-reveal>
         <div class="thumb">
           <img
-            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2000&q=80"
+            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1400&q=70"
             alt="Maison Élan luxury storefront"
-            loading="lazy"
+            width="1400" height="600"
+            fetchpriority="high"
+            decoding="async"
           />
         </div>
         <span class="scan-top"></span>
@@ -122,7 +126,7 @@
 
         <a class="project" data-category="agentic" href="contact.html">
           <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80" alt="Sprintline agentic AI" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=70" alt="Sprintline agentic AI" width="800" height="1000" loading="lazy" decoding="async" />
           </div>
           <span class="scan-top"></span>
           <span class="num">02 / 09</span>
@@ -143,7 +147,7 @@
 
         <a class="project" data-category="mobile" href="contact.html">
           <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80" alt="Northwind mobile app" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=70" alt="Northwind mobile app" width="800" height="1000" loading="lazy" decoding="async" />
           </div>
           <span class="scan-top"></span>
           <span class="num">03 / 09</span>
@@ -164,7 +168,7 @@
 
         <a class="project" data-category="web" href="contact.html">
           <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" alt="Lumen Analytics dashboard" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=70" alt="Lumen Analytics dashboard" width="800" height="1000" loading="lazy" decoding="async" />
           </div>
           <span class="scan-top"></span>
           <span class="num">04 / 09</span>
@@ -185,7 +189,7 @@
 
         <a class="project" data-category="ai" href="contact.html">
           <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80" alt="Vault legal AI" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=70" alt="Vault legal AI" width="800" height="1000" loading="lazy" decoding="async" />
           </div>
           <span class="scan-top"></span>
           <span class="num">05 / 09</span>
@@ -206,7 +210,7 @@
 
         <a class="project" data-category="brand" href="contact.html">
           <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b8?auto=format&fit=crop&w=1200&q=80" alt="Atlas Ventures brand" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b8?auto=format&fit=crop&w=800&q=70" alt="Atlas Ventures brand" width="800" height="1000" loading="lazy" decoding="async" />
           </div>
           <span class="scan-top"></span>
           <span class="num">06 / 09</span>
@@ -227,7 +231,7 @@
 
         <a class="project" data-category="web" href="contact.html">
           <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80" alt="Orbital developer platform" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=70" alt="Orbital developer platform" width="800" height="1000" loading="lazy" decoding="async" />
           </div>
           <span class="scan-top"></span>
           <span class="num">07 / 09</span>
@@ -248,7 +252,7 @@
 
         <a class="project" data-category="ai" href="contact.html">
           <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80" alt="Pixelwise vision model" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=70" alt="Pixelwise vision model" width="800" height="1000" loading="lazy" decoding="async" />
           </div>
           <span class="scan-top"></span>
           <span class="num">08 / 09</span>
@@ -269,7 +273,7 @@
 
         <a class="project" data-category="shopify" href="contact.html">
           <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=1200&q=80" alt="Basecamp Outdoors Shopify" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=800&q=70" alt="Basecamp Outdoors Shopify" width="800" height="1000" loading="lazy" decoding="async" />
           </div>
           <span class="scan-top"></span>
           <span class="num">09 / 09</span>
