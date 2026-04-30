@@ -77,7 +77,52 @@
     counters.forEach((el) => cio.observe(el));
   }
 
-  /* ---------- Custom cursor: disabled (native cursor feels instant) ---------- */
+  /* ---------- Custom cursor (desktop only, lightweight) ---------- */
+  const dot = document.querySelector('.cursor-dot');
+  const ring = document.querySelector('.cursor-ring');
+  const finePointer = matchMedia('(pointer:fine)').matches && window.innerWidth > 900;
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (dot && ring && finePointer && !reducedMotion) {
+    let mx = window.innerWidth / 2;
+    let my = window.innerHeight / 2;
+    let rx = mx;
+    let ry = my;
+    const DOT_HALF = 4;
+    const RING_HALF = 18;
+
+    window.addEventListener(
+      'pointermove',
+      (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+      },
+      { passive: true }
+    );
+
+    window.addEventListener('pointerleave', () => {
+      document.body.classList.remove('cursor-active');
+    });
+    window.addEventListener('pointerenter', () => {
+      document.body.classList.add('cursor-active');
+    });
+
+    (function loop() {
+      dot.style.transform = `translate3d(${mx - DOT_HALF}px, ${my - DOT_HALF}px, 0)`;
+      rx += (mx - rx) * 0.34;
+      ry += (my - ry) * 0.34;
+      ring.style.transform = `translate3d(${rx - RING_HALF}px, ${ry - RING_HALF}px, 0)`;
+      requestAnimationFrame(loop);
+    })();
+
+    const hoverSelector = 'a, button, summary, input, textarea, select, .service-card, .project, [data-magnetic]';
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest(hoverSelector)) document.body.classList.add('cursor-hover');
+    });
+    document.addEventListener('mouseout', (e) => {
+      if (e.target.closest(hoverSelector)) document.body.classList.remove('cursor-hover');
+    });
+  }
 
   /* ---------- Magnetic buttons ---------- */
   document.querySelectorAll('[data-magnetic]').forEach((el) => {
