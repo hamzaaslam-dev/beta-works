@@ -77,66 +77,6 @@
     counters.forEach((el) => cio.observe(el));
   }
 
-  /* ---------- Custom cursor (desktop only, lightweight) ---------- */
-  const dot = document.querySelector('.cursor-dot');
-  const ring = document.querySelector('.cursor-ring');
-  const finePointer = matchMedia('(pointer:fine)').matches && window.innerWidth > 900;
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (dot && ring && finePointer && !reducedMotion) {
-    let mx = window.innerWidth / 2;
-    let my = window.innerHeight / 2;
-    let rx = mx;
-    let ry = my;
-    const DOT_HALF = 4;
-    const RING_HALF = 18;
-
-    window.addEventListener(
-      'pointermove',
-      (e) => {
-        mx = e.clientX;
-        my = e.clientY;
-      },
-      { passive: true }
-    );
-
-    window.addEventListener('pointerleave', () => {
-      document.body.classList.remove('cursor-active');
-    });
-    window.addEventListener('pointerenter', () => {
-      document.body.classList.add('cursor-active');
-    });
-
-    (function loop() {
-      dot.style.transform = `translate3d(${mx - DOT_HALF}px, ${my - DOT_HALF}px, 0)`;
-      rx += (mx - rx) * 0.34;
-      ry += (my - ry) * 0.34;
-      ring.style.transform = `translate3d(${rx - RING_HALF}px, ${ry - RING_HALF}px, 0)`;
-      requestAnimationFrame(loop);
-    })();
-
-    const hoverSelector = 'a, button, summary, input, textarea, select, .service-card, .project, [data-magnetic]';
-    document.addEventListener('mouseover', (e) => {
-      if (e.target.closest(hoverSelector)) document.body.classList.add('cursor-hover');
-    });
-    document.addEventListener('mouseout', (e) => {
-      if (e.target.closest(hoverSelector)) document.body.classList.remove('cursor-hover');
-    });
-  }
-
-  /* ---------- Magnetic buttons ---------- */
-  document.querySelectorAll('[data-magnetic]').forEach((el) => {
-    const strength = 18;
-    el.addEventListener('pointermove', (e) => {
-      const r = el.getBoundingClientRect();
-      const x = e.clientX - (r.left + r.width / 2);
-      const y = e.clientY - (r.top + r.height / 2);
-      el.style.transform = `translate(${(x / r.width) * strength}px, ${(y / r.height) * strength}px)`;
-    });
-    el.addEventListener('pointerleave', () => {
-      el.style.transform = '';
-    });
-  });
 
   /* ---------- Contact form (client-side) ---------- */
   const form = document.querySelector('form.contact-form');
@@ -167,12 +107,4 @@
   const yr = document.querySelector('[data-year]');
   if (yr) yr.textContent = new Date().getFullYear();
 
-  /* ---------- Hero text reveal ---------- */
-  document.querySelectorAll('.hero h1 .line > span').forEach((el, i) => {
-    el.style.transform = 'translateY(100%)';
-    el.style.transition = `transform 1s cubic-bezier(.2,.8,.2,1) ${0.1 + i * 0.12}s`;
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => { el.style.transform = 'translateY(0)'; });
-    });
-  });
 })();

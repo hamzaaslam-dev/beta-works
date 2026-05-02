@@ -377,14 +377,7 @@ p { margin: 0 0 1em; color: var(--text-dim); }
     #05050b;
   isolation: isolate;
 }
-.hero-futuristic .hero-canvas {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0;
-  animation: hero-canvas-in 1.4s ease forwards 0.2s;
-}
+.hero-futuristic .hero-canvas { display: none; }
 .hero-futuristic .hero-canvas canvas {
   position: absolute;
   inset: 0;
@@ -461,7 +454,7 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   top: 0;
   background: linear-gradient(90deg, transparent, rgba(34,211,238,0.85), transparent);
   box-shadow: 0 0 24px rgba(34, 211, 238, 0.9), 0 0 60px rgba(124, 92, 255, 0.55);
-  animation: hero-scan 5s cubic-bezier(.55,.0,.45,1) infinite;
+  animation: none;
   opacity: 0.9;
 }
 @keyframes hero-scan {
@@ -502,9 +495,9 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.78);
   margin-bottom: 28px;
-  opacity: 0;
-  transform: translateY(8px);
-  animation: hero-fade-up 0.7s ease forwards 0.1s;
+  opacity: 1;
+  transform: none;
+  animation: none;
 }
 .hero-eyebrow .dot {
   width: 6px; height: 6px;
@@ -531,9 +524,9 @@ p { margin: 0 0 1em; color: var(--text-dim); }
 }
 .hero-title .word {
   display: inline-block;
-  opacity: 0;
-  transform: translateY(110%);
-  animation: hero-word-in 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 1;
+  transform: none;
+  animation: none;
   text-shadow: 0 0 36px rgba(124, 92, 255, 0.45);
   position: relative;
 }
@@ -566,9 +559,9 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   color: rgba(255, 255, 255, 0.78);
   font-weight: 400;
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.6);
-  opacity: 0;
-  transform: translateY(8px);
-  animation: hero-fade-up 0.7s ease forwards 0.55s;
+  opacity: 1;
+  transform: none;
+  animation: none;
 }
 
 .hero-actions-f {
@@ -577,9 +570,9 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   gap: 14px;
   flex-wrap: wrap;
   justify-content: center;
-  opacity: 0;
-  transform: translateY(8px);
-  animation: hero-fade-up 0.7s ease forwards 0.7s;
+  opacity: 1;
+  transform: none;
+  animation: none;
 }
 
 /* Scroll-to-explore pill */
@@ -605,8 +598,8 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   text-decoration: none;
   cursor: pointer;
   z-index: 4;
-  opacity: 0;
-  animation: hero-fade-up 0.7s ease forwards 0.9s;
+  opacity: 1;
+  animation: none;
   transition:
     background 0.18s ease,
     border-color 0.18s ease,
@@ -624,10 +617,7 @@ p { margin: 0 0 1em; color: var(--text-dim); }
     0 0 90px rgba(34, 211, 238, 0.25);
   color: #fff;
 }
-.explore-btn .explore-arrow {
-  display: inline-flex;
-  animation: arrow-bob 1.6s ease-in-out infinite;
-}
+.explore-btn .explore-arrow { display: inline-flex; animation: none; }
 .explore-btn .explore-arrow svg { display: block; }
 @keyframes arrow-bob {
   0%, 100% { transform: translateY(0); }
@@ -693,7 +683,7 @@ p { margin: 0 0 1em; color: var(--text-dim); }
 .marquee-track {
   display: flex; gap: 64px;
   width: max-content;
-  animation: marquee 40s linear infinite;
+  animation: none;
 }
 .marquee-track span {
   font-family: var(--font-display);
@@ -1650,7 +1640,7 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   position: absolute; top: 0; left: 0; right: 0; height: 2px;
   background: linear-gradient(90deg, transparent, var(--c-cyan), transparent);
   box-shadow: 0 0 18px rgba(34,211,238,0.7);
-  animation: proj-scan 6s linear infinite;
+  animation: none;
   z-index: 3;
   opacity: 0.8;
 }
@@ -1851,7 +1841,7 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   position: absolute; top: 0; left: 0; right: 0; height: 1.5px;
   background: linear-gradient(90deg, transparent, var(--c-cyan), transparent);
   box-shadow: 0 0 12px rgba(34,211,238,0.65);
-  animation: proj-scan 7s linear infinite;
+  animation: none;
   z-index: 2;
   opacity: 0.55;
 }
@@ -2269,6 +2259,42 @@ body.cursor-hover .cursor-ring {
   .team-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .hero-meta { gap: 24px; }
+}
+
+/* Simplified + performance-focused mode */
+.service-visual .shape,
+.service-visual .url::after,
+.service-visual .code .line,
+.service-visual .code .line::after,
+.service-visual .phone,
+.service-visual .apps span,
+.service-visual .phone .topbar::after,
+.service-visual .card,
+.service-visual .cart,
+.service-visual .gear,
+.service-visual .flow .line::after,
+.service-visual .network .edge.active,
+.service-visual .network .node,
+.service-visual .core,
+.service-visual .hub .center,
+.service-visual .orbit,
+.service-visual .swatch,
+.service-visual .bigA,
+.service-visual .bigA::after,
+.project-featured .badge-featured::before {
+  animation: none !important;
+}
+
+/* Disable custom cursor presentation */
+.cursor-dot,
+.cursor-ring {
+  display: none !important;
+}
+body {
+  cursor: auto !important;
+}
+a, button, input, textarea, select, summary, .service-card, .project {
+  cursor: pointer;
 }
 
 /* Reduce motion */
