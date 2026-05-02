@@ -107,6 +107,8 @@
     var lines = [];
     var raf = 0;
     var running = true;
+    var hasPointer = false;
+    var pointer = { x: window.innerWidth * 0.5, y: window.innerHeight * 0.5 };
 
     var hue = new Oscillator({
       phase: Math.random() * Math.PI * 2,
@@ -145,10 +147,25 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
+    function syncPointerToCanvas() {
+      var rect = canvas.getBoundingClientRect();
+      pos.x = Math.max(0, Math.min(rect.width, pointer.x - rect.left));
+      pos.y = Math.max(0, Math.min(rect.height, pointer.y - rect.top));
+    }
+
+    function pointerMove(e) {
+      hasPointer = true;
+      pointer.x = e.clientX;
+      pointer.y = e.clientY;
+      syncPointerToCanvas();
+    }
+
     function frame() {
       if (!running) return;
-      pos.x = window.innerWidth * driftX.update();
-      pos.y = window.innerHeight * driftY.update();
+      if (!hasPointer) {
+        pos.x = window.innerWidth * driftX.update();
+        pos.y = window.innerHeight * driftY.update();
+      }
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.globalCompositeOperation = "lighter";
       ctx.lineWidth = CONFIG.lineWidth;
@@ -177,6 +194,8 @@
     frame();
 
     window.addEventListener("resize", resize, { passive: true });
+    window.addEventListener("mousemove", pointerMove, { passive: true });
+    window.addEventListener("scroll", syncPointerToCanvas, { passive: true });
     document.addEventListener("visibilitychange", onVisibility);
   }
 
