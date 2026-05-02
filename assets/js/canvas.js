@@ -107,13 +107,24 @@
     var lines = [];
     var raf = 0;
     var running = true;
-    var pointerQueued = false;
 
     var hue = new Oscillator({
       phase: Math.random() * Math.PI * 2,
       amplitude: 25,
       frequency: 0.0015,
       offset: 208,
+    });
+    var driftX = new Oscillator({
+      phase: Math.random() * Math.PI * 2,
+      amplitude: 0.22,
+      frequency: 0.00035,
+      offset: 0.5,
+    });
+    var driftY = new Oscillator({
+      phase: Math.random() * Math.PI * 2,
+      amplitude: 0.18,
+      frequency: 0.00027,
+      offset: 0.5,
     });
 
     function initLines() {
@@ -134,18 +145,10 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
-    function pointerMove(e) {
-      if (pointerQueued) return;
-      pointerQueued = true;
-      requestAnimationFrame(function () {
-        pos.x = e.clientX;
-        pos.y = e.clientY;
-        pointerQueued = false;
-      });
-    }
-
     function frame() {
       if (!running) return;
+      pos.x = window.innerWidth * driftX.update();
+      pos.y = window.innerHeight * driftY.update();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.globalCompositeOperation = "lighter";
       ctx.lineWidth = CONFIG.lineWidth;
@@ -174,7 +177,6 @@
     frame();
 
     window.addEventListener("resize", resize, { passive: true });
-    window.addEventListener("mousemove", pointerMove, { passive: true });
     document.addEventListener("visibilitychange", onVisibility);
   }
 
