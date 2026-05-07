@@ -52,7 +52,7 @@ Then open <http://localhost:8080>.
 
 Most edits are quick to make:
 
-1. **Agency name** — replace `Nexora` across the HTML files (Find & Replace).
+1. **Agency name** — replace `beta-works` across the HTML files (Find & Replace).
 2. **Brand colours** — change the gradient stops at the top of `assets/css/style.css`
    (`--c-violet`, `--c-cyan`, `--c-magenta`).
 3. **Contact details** — update email / phone in every page's footer & the
