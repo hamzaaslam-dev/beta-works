@@ -85,6 +85,9 @@
       const status = form.querySelector('.form-status');
       const name = form.querySelector('[name="name"]').value.trim();
       const email = form.querySelector('[name="email"]').value.trim();
+      const company = form.querySelector('[name="company"]')?.value.trim() || 'Not provided';
+      const budget = form.querySelector('[name="budget"]')?.value || 'Not provided';
+      const service = form.querySelector('[name="service"]')?.value || 'Not provided';
       const message = form.querySelector('[name="message"]').value.trim();
       const valid =
         name.length > 1 &&
@@ -95,9 +98,22 @@
         status.textContent = 'Please fill in your name, a valid email, and a short message.';
         return;
       }
-      // Demo UX — replace with your endpoint (Formspree, Getform, your backend, etc.)
+
+      const recipient = 'info@beta-works.com';
+      const subject = `New project brief from ${name}`;
+      const body =
+        `Name: ${name}\n` +
+        `Email: ${email}\n` +
+        `Company: ${company}\n` +
+        `Service: ${service}\n` +
+        `Budget: ${budget}\n\n` +
+        `Project brief:\n${message}\n`;
+
+      window.location.href =
+        `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
       status.className = 'form-status ok';
-      status.textContent = 'Thanks! Your message is queued. We will reach out within 24 hours.';
+      status.textContent = 'Your email app opened with the brief ready to send to info@beta-works.com.';
       form.reset();
     });
   }
