@@ -2454,4 +2454,10 @@ a, button, input, textarea, select, summary, .service-card, .project {
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
   .hero-visual .ring { animation: none; }
+  /* Keep service strip movement active even when other motion is reduced. */
+  .marquee-track {
+    animation: marquee-right 28s linear infinite !important;
+    animation-duration: 28s !important;
+    animation-iteration-count: infinite !important;
+  }
 }
