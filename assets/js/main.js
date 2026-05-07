@@ -77,31 +77,6 @@
     counters.forEach((el) => cio.observe(el));
   }
 
-  /* ---------- Clickable service cards ---------- */
-  const serviceCards = document.querySelectorAll('.service-card');
-  serviceCards.forEach((card) => {
-    const primaryLink = card.querySelector('.arrow[href]');
-    if (!primaryLink) return;
-
-    const href = primaryLink.getAttribute('href');
-    if (!href) return;
-
-    card.setAttribute('role', 'link');
-    card.setAttribute('tabindex', '0');
-
-    card.addEventListener('click', (e) => {
-      if (e.target.closest('a, button, input, textarea, select, summary, label')) return;
-      window.location.href = href;
-    });
-
-    card.addEventListener('keydown', (e) => {
-      if (e.key !== 'Enter' && e.key !== ' ') return;
-      e.preventDefault();
-      window.location.href = href;
-    });
-  });
-
-
   /* ---------- Contact form (client-side) ---------- */
   const form = document.querySelector('form.contact-form');
   if (form) {
