@@ -56,7 +56,7 @@ Most edits are quick to make:
 2. **Brand colours** — change the gradient stops at the top of `assets/css/style.css`
    (`--c-violet`, `--c-cyan`, `--c-magenta`).
 3. **Contact details** — update email / phone in every page's footer & the
-   `contact.html` info card (search for `hello@nexora.agency`).
+   `contact.html` info card (search for `hello@beta-works.agency`).
 4. **Services copy** — edit the service sections in `index.html` and
    `services.html`.
 5. **Projects** — replace the placeholder cards in `portfolio.html` with real
