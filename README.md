@@ -1,4 +1,4 @@
-# Nexora — IT Agency Website
+# Beta Works — IT Agency Website
 
 A modern, sleek, fully static multi-page website for an IT agency offering Web
 Development, Mobile Development, Shopify, Automation, AI/ML, Agentic AI and
