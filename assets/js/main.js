@@ -98,23 +98,16 @@
         status.textContent = 'Please fill in your name, a valid email, and a short message.';
         return;
       }
-
-      const recipient = 'info@beta-works.com';
-      const subject = `New project brief from ${name}`;
-      const body =
-        `Name: ${name}\n` +
-        `Email: ${email}\n` +
-        `Company: ${company}\n` +
-        `Service: ${service}\n` +
-        `Budget: ${budget}\n\n` +
-        `Project brief:\n${message}\n`;
-
-      window.location.href =
-        `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
       status.className = 'form-status ok';
-      status.textContent = 'Your email app opened with the brief ready to send to info@beta-works.com.';
-      form.reset();
+      status.textContent = 'Sending your brief...';
+
+      const subjectField = form.querySelector('[name="_subject"]');
+      if (subjectField) {
+        subjectField.value = `New project brief from ${name}`;
+      }
+
+      // Submit to FormSubmit endpoint so the brief is emailed to us.
+      form.submit();
     });
   }
 
