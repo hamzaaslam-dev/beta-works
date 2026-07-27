@@ -1,5 +1,10 @@
 # Dependencies
 node_modules/
+web/node_modules/
+
+# Next.js
+web/.next/
+web/out/
 
 # Vercel
 .vercel
@@ -22,3 +27,8 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+
+# Local tooling
+.gh-config/
+.local/
+*.pem
