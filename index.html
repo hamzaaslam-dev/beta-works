@@ -15,15 +15,15 @@
   <!-- Fonts (non-render-blocking) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" /></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" /></noscript>
 
   <!-- Styles -->
   <link rel="stylesheet" href="assets/css/style.css" />
 
   <!-- Favicon (inline SVG) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%237c5cff'/%3E%3Cstop offset='0.5' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%23ff3cac'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Crect x='8' y='8' width='16' height='16' rx='4' fill='%23070712'/%3E%3Crect x='12' y='12' width='8' height='8' rx='2' fill='url(%23g)'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2307070b'/%3E%3Cpath d='M7 10h18' stroke='%23353841' stroke-width='1.5'/%3E%3Cpath d='M7 16h18' stroke='%23f2eee7' stroke-width='1.5' stroke-opacity='.45'/%3E%3Cpath d='M7 22h10' stroke='%23ffb84d' stroke-width='2'/%3E%3Ccircle cx='22.5' cy='22' r='2.5' fill='%23ffb84d'/%3E%3C/svg%3E" />
 </head>
 <body>
   <div class="grid-overlay"></div>
@@ -63,34 +63,87 @@
     </div>
   </header>
 
-  <!-- ============ HERO (FUTURISTIC) ============ -->
-  <section class="hero hero-futuristic">
-    <canvas id="canvas" class="hero-bg-canvas" aria-hidden="true"></canvas>
-    <div class="hero-vignette" aria-hidden="true"></div>
-
-    <div class="hero-center">
-      <span class="hero-eyebrow">
-        <span class="dot"></span> Global digital studio · Est. 2026
-      </span>
-      <h1 class="hero-title" aria-label="Engineering The Future">
-        <span class="word">Engineering</span>
-        <span class="word">The</span>
-        <span class="word">Future</span>
-      </h1>
-      <p class="hero-sub">
-        AI-native studio shipping web, mobile, Shopify, automations &amp; agentic systems — at the speed of thought.
-      </p>
-
-      <div class="hero-actions-f">
-        <a href="contact.html" class="btn btn-primary" data-magnetic>
-          <span>Start a project
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span>
-        </a>
-        <a href="services.html" class="btn btn-ghost">Explore services</a>
+  <!-- ============ HERO (WORKBENCH) ============ -->
+  <section class="hero hero-workbench">
+    <div class="container hero-shell">
+      <div class="hero-rail" data-reveal>01 / BUILD SYSTEM</div>
+      <div class="hero-copy">
+        <span class="hero-eyebrow eyebrow" data-reveal>
+          <span class="dot"></span> Senior product engineers · Est. 2026
+        </span>
+        <h1 class="hero-title" data-reveal>Engineering the future of business.</h1>
+        <p class="hero-sub" data-reveal>
+          Beta Works ships web, mobile, commerce, automation and agentic systems for teams that need senior judgment, not agency theater.
+        </p>
+        <div class="hero-actions-f" data-reveal>
+          <a href="contact.html" class="btn btn-primary" data-magnetic>
+            <span>Start a project
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </a>
+          <a href="services.html" class="btn btn-ghost">Explore services</a>
+        </div>
+        <div class="hero-ledger" data-reveal-stagger>
+          <div class="hero-ledger-item">
+            <span class="k">Response</span>
+            <span class="v">24h</span>
+          </div>
+          <div class="hero-ledger-item">
+            <span class="k">Core lanes</span>
+            <span class="v">07</span>
+          </div>
+          <div class="hero-ledger-item">
+            <span class="k">Shipped with</span>
+            <span class="v">senior-only squads</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-signature" data-reveal>
+        <div class="pipeline-board" aria-hidden="true">
+          <div class="pipeline-head">
+            <span>LIVE BUILD PIPELINE</span>
+            <span>SYNCED / WEEKLY DEMOS</span>
+          </div>
+          <div class="pipeline-flow">
+            <div class="pipeline-line">
+              <span class="segment s1"></span>
+              <span class="segment s2"></span>
+              <span class="segment s3"></span>
+            </div>
+            <article class="pipeline-step step-discover">
+              <span class="step-index">01</span>
+              <h3>Discover</h3>
+              <p>Audit the business, users, constraints.</p>
+            </article>
+            <article class="pipeline-step step-design">
+              <span class="step-index">02</span>
+              <h3>Design</h3>
+              <p>Shape the system before code ships.</p>
+            </article>
+            <article class="pipeline-step step-build is-live">
+              <span class="step-index">03</span>
+              <h3>Build</h3>
+              <p>Engineer in tight, visible sprints.</p>
+            </article>
+            <article class="pipeline-step step-launch">
+              <span class="step-index">04</span>
+              <h3>Launch</h3>
+              <p>Deploy, measure, iterate, compound.</p>
+            </article>
+            <div class="pipeline-core">
+              <span class="core-ring"></span>
+              <span class="core-ring r2"></span>
+              <span class="core-dot"></span>
+            </div>
+          </div>
+          <dl class="pipeline-readout">
+            <div><dt>Surface</dt><dd>Product, platform, brand</dd></div>
+            <div><dt>Ops</dt><dd>Slack / Linear / Git</dd></div>
+            <div><dt>Mode</dt><dd>Quietly fast</dd></div>
+          </dl>
+        </div>
       </div>
     </div>
-
   </section>
 
   <!-- ============ MARQUEE ============ -->
@@ -308,7 +361,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/canvas.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
