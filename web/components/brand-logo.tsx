@@ -5,45 +5,37 @@ import { cn } from '@/lib/utils'
 type BrandLogoProps = {
   href?: string
   className?: string
-  /** Use full lockup (B + BETA WORKS) vs mark + CSS wordmark */
-  variant?: 'lockup' | 'mark'
+  /** horizontal = nav lockup, stacked = footer lockup, mark = icon only */
+  variant?: 'horizontal' | 'stacked' | 'mark'
   size?: 'sm' | 'md' | 'lg'
 }
 
-const lockupSizes = {
-  sm: { width: 118, height: 40 },
-  md: { width: 148, height: 50 },
-  lg: { width: 180, height: 62 },
+const horizontalSizes = {
+  sm: { width: 168, height: 41 },
+  md: { width: 210, height: 51 },
+  lg: { width: 260, height: 64 },
+}
+
+const stackedSizes = {
+  sm: { width: 110, height: 75 },
+  md: { width: 140, height: 96 },
+  lg: { width: 180, height: 123 },
 }
 
 const markSizes = {
-  sm: { width: 28, height: 28 },
-  md: { width: 34, height: 34 },
-  lg: { width: 44, height: 44 },
+  sm: { width: 28, height: 32 },
+  md: { width: 36, height: 42 },
+  lg: { width: 48, height: 56 },
 }
 
 export function BrandLogo({
   href = '/',
   className,
-  variant = 'lockup',
+  variant = 'horizontal',
   size = 'md',
 }: BrandLogoProps) {
   const content =
-    variant === 'lockup' ? (
-      <Image
-        src="/brand/logo.png"
-        alt="Beta Works"
-        width={lockupSizes[size].width}
-        height={lockupSizes[size].height}
-        className={cn(
-          'h-auto w-auto max-h-10 object-contain drop-shadow-[0_0_18px_rgba(14,165,233,0.22)] sm:max-h-11',
-          size === 'md' && 'max-h-11 sm:max-h-12',
-          size === 'lg' && 'max-h-14 sm:max-h-16',
-          className
-        )}
-        priority
-      />
-    ) : (
+    variant === 'mark' ? (
       <Image
         src="/brand/mark.png"
         alt="Beta Works"
@@ -51,6 +43,33 @@ export function BrandLogo({
         height={markSizes[size].height}
         className={cn(
           'h-auto w-auto object-contain drop-shadow-[0_0_18px_rgba(14,165,233,0.25)]',
+          className
+        )}
+        priority
+      />
+    ) : variant === 'stacked' ? (
+      <Image
+        src="/brand/logo.png"
+        alt="Beta Works"
+        width={stackedSizes[size].width}
+        height={stackedSizes[size].height}
+        className={cn(
+          'h-auto w-auto max-h-16 object-contain drop-shadow-[0_0_18px_rgba(14,165,233,0.22)] sm:max-h-20',
+          size === 'lg' && 'max-h-24 sm:max-h-28',
+          className
+        )}
+        priority
+      />
+    ) : (
+      <Image
+        src="/brand/logo-horizontal.png"
+        alt="Beta Works"
+        width={horizontalSizes[size].width}
+        height={horizontalSizes[size].height}
+        className={cn(
+          'h-auto w-auto max-h-8 object-contain drop-shadow-[0_0_18px_rgba(14,165,233,0.22)] sm:max-h-9',
+          size === 'md' && 'max-h-9 sm:max-h-10',
+          size === 'lg' && 'max-h-11 sm:max-h-12',
           className
         )}
         priority

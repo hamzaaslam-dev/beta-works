@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: 'Beta Works — Engineering The Future Of Business',
     description:
       'Beta Works is a senior digital studio shipping web, mobile, Shopify, AI/ML, agentic systems, automations and brand experiences.',
-    images: [{ url: '/brand/logo.png', width: 195, height: 134, alt: 'Beta Works' }],
+    images: [{ url: '/brand/logo.png', width: 855, height: 586, alt: 'Beta Works' }],
   },
 }
 

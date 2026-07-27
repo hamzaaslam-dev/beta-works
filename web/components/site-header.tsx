@@ -25,7 +25,7 @@ export function SiteHeader() {
   return (
     <header className="fixed top-4 right-0 left-0 z-50 px-4">
       <div className="mx-auto flex max-w-6xl items-center justify-between rounded-full border border-white/10 bg-[#07111f]/75 px-5 py-2.5 text-sm text-slate-100 shadow-[0_18px_50px_rgba(5,15,40,0.35)] backdrop-blur-xl">
-        <BrandLogo variant="lockup" size="sm" />
+        <BrandLogo variant="horizontal" size="sm" />
 
         <nav className="hidden items-center gap-6 text-slate-300 md:flex" aria-label="Primary">
           {links.map((link) => (

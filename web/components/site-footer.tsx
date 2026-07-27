@@ -9,7 +9,7 @@ export function SiteFooter() {
     <footer className="border-t border-white/10 bg-[#030712] text-slate-300">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-4 md:px-6">
         <div className="md:col-span-1">
-          <BrandLogo variant="lockup" size="md" />
+          <BrandLogo variant="stacked" size="md" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">{site.tagline}</p>
         </div>
 
