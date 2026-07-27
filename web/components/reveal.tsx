@@ -1,109 +1,72 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { useRef } from 'react'
-import { motion, useInView, useReducedMotion, type Variants } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 
-const ease = [0.22, 1, 0.36, 1] as const
-
-const variants: Record<string, Variants> = {
-  fadeUp: {
-    hidden: { opacity: 0, y: 28 },
-    visible: { opacity: 1, y: 0 },
-  },
-  fade: {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-  },
-  scale: {
-    hidden: { opacity: 0, scale: 0.96 },
-    visible: { opacity: 1, scale: 1 },
-  },
-  slideLeft: {
-    hidden: { opacity: 0, x: -24 },
-    visible: { opacity: 1, x: 0 },
-  },
-}
-
+/** Lightweight CSS scroll reveal — avoids Framer Motion observers on every block */
 export function Reveal({
   children,
   className,
   delay = 0,
-  variant = 'fadeUp',
-  once = true,
 }: {
   children: ReactNode
   className?: string
   delay?: number
-  variant?: keyof typeof variants
-  once?: boolean
 }) {
   const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once, margin: '-10% 0px -8% 0px' })
-  const reduce = useReducedMotion()
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          io.disconnect()
+        }
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      className={cn(className)}
-      initial={reduce ? false : 'hidden'}
-      animate={reduce || inView ? 'visible' : 'hidden'}
-      variants={variants[variant]}
-      transition={{ duration: 0.7, delay, ease }}
+      className={cn('reveal-base', visible && 'reveal-in', className)}
+      style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
-    </motion.div>
+    </div>
   )
 }
 
 export function RevealStagger({
   children,
   className,
-  stagger = 0.08,
 }: {
   children: ReactNode
   className?: string
-  stagger?: number
 }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-8% 0px' })
-  const reduce = useReducedMotion()
-
-  return (
-    <motion.div
-      ref={ref}
-      className={className}
-      initial="hidden"
-      animate={reduce || inView ? 'visible' : 'hidden'}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: { staggerChildren: reduce ? 0 : stagger },
-        },
-      }}
-    >
-      {children}
-    </motion.div>
-  )
+  return <div className={className}>{children}</div>
 }
 
 export function RevealItem({
   children,
   className,
-  variant = 'fadeUp',
+  index = 0,
 }: {
   children: ReactNode
   className?: string
-  variant?: keyof typeof variants
+  index?: number
+  variant?: string
 }) {
   return (
-    <motion.div
-      className={className}
-      variants={variants[variant]}
-      transition={{ duration: 0.65, ease }}
-    >
+    <Reveal className={className} delay={Math.min(index * 60, 240)}>
       {children}
-    </motion.div>
+    </Reveal>
   )
 }

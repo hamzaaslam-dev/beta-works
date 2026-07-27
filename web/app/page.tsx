@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import { ArrowRight, Globe, Bot, Smartphone, Brain, ShoppingBag, Workflow, Palette } from 'lucide-react'
 import { SplineSceneBasic } from '@/components/ui/spline-scene-basic'
@@ -59,7 +57,6 @@ export default function HomePage() {
       <Marquee />
 
       <section id="services" className="relative mx-auto max-w-6xl px-4 py-24 md:px-6">
-        <div className="pointer-events-none absolute top-10 right-0 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl" />
         <Reveal>
           <SectionHeading
             eyebrow="What we do"
@@ -75,22 +72,21 @@ export default function HomePage() {
           />
         </Reveal>
 
-        <RevealStagger className="grid gap-4 md:grid-cols-6" stagger={0.07}>
+        <RevealStagger className="grid gap-4 md:grid-cols-6">
           {cards.map((service, index) => {
             const Icon = icons[service.id as keyof typeof icons]
             const wide = index === 0 || index === 1 || index >= 5
             return (
               <RevealItem
                 key={service.id}
+                index={index}
                 className={wide ? 'md:col-span-3' : 'md:col-span-2'}
-                variant="scale"
               >
                 <Link
                   href={`/services#${service.id}`}
-                  className="group relative block h-full overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-sky-300/35 hover:bg-white/[0.055] hover:shadow-[0_24px_60px_rgba(8,30,90,0.35)]"
+                  className="group relative block h-full overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.03] p-6 transition-colors duration-200 hover:border-sky-300/35 hover:bg-white/[0.055]"
                 >
-                  <div className="pointer-events-none absolute -top-10 -right-10 h-28 w-28 rounded-full bg-sky-400/0 blur-2xl transition-colors duration-300 group-hover:bg-sky-400/15" />
-                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl border border-sky-300/20 bg-sky-400/10 text-sky-200 transition-transform duration-300 group-hover:scale-110">
+                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl border border-sky-300/20 bg-sky-400/10 text-sky-200">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div className="flex items-start justify-between gap-3">
@@ -100,7 +96,7 @@ export default function HomePage() {
                       </h3>
                       <p className="mt-2 text-sm leading-relaxed text-slate-400">{service.summary}</p>
                     </div>
-                    <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-slate-500 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-sky-300" />
+                    <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-slate-500 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-sky-300" />
                   </div>
                 </Link>
               </RevealItem>
@@ -110,7 +106,7 @@ export default function HomePage() {
       </section>
 
       <section className="relative mx-auto max-w-6xl px-4 py-12 md:px-6">
-        <Reveal variant="fadeUp">
+        <Reveal>
           <StatStrip
             stats={[
               { value: 98, suffix: '%', label: 'Client retention' },
@@ -123,7 +119,6 @@ export default function HomePage() {
       </section>
 
       <section className="relative mx-auto max-w-6xl px-4 py-24 md:px-6">
-        <div className="pointer-events-none absolute bottom-0 left-0 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl" />
         <Reveal>
           <SectionHeading
             eyebrow="How we work"
@@ -131,18 +126,18 @@ export default function HomePage() {
             lead="A transparent operating system that gets from idea to launch in weeks — not quarters."
           />
         </Reveal>
-        <RevealStagger className="space-y-3" stagger={0.1}>
+        <RevealStagger className="space-y-3">
           {process.map((step, i) => (
-            <RevealItem key={step.num} variant={i % 2 === 0 ? 'slideLeft' : 'fadeUp'}>
-              <div className="group grid items-center gap-4 rounded-[22px] border border-white/10 bg-white/[0.03] px-5 py-5 transition-all duration-300 hover:border-sky-300/30 hover:bg-white/[0.05] md:grid-cols-[160px_1fr_120px] md:px-6">
-                <div className="font-mono text-xs tracking-[0.14em] text-sky-300/80 uppercase transition-colors group-hover:text-sky-200">
+            <RevealItem key={step.num} index={i}>
+              <div className="group grid items-center gap-4 rounded-[22px] border border-white/10 bg-white/[0.03] px-5 py-5 transition-colors duration-200 hover:border-sky-300/30 hover:bg-white/[0.05] md:grid-cols-[160px_1fr_120px] md:px-6">
+                <div className="font-mono text-xs tracking-[0.14em] text-sky-300/80 uppercase">
                   {step.num}
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-white">{step.title}</h3>
                   <p className="mt-1 text-sm leading-relaxed text-slate-400">{step.body}</p>
                 </div>
-                <div className="justify-self-start rounded-full border border-white/10 px-3 py-1 text-xs text-slate-300 transition-colors group-hover:border-sky-300/30 group-hover:text-sky-100 md:justify-self-end">
+                <div className="justify-self-start rounded-full border border-white/10 px-3 py-1 text-xs text-slate-300 md:justify-self-end">
                   {step.tag}
                 </div>
               </div>
@@ -151,7 +146,7 @@ export default function HomePage() {
         </RevealStagger>
       </section>
 
-      <Reveal variant="scale">
+      <Reveal>
         <CtaBand
           title={
             <>

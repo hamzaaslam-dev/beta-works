@@ -80,7 +80,7 @@ export function StatStrip({ stats }: { stats: Stat[] }) {
       {stats.map((stat) => (
         <div
           key={stat.label}
-          className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.02] px-5 py-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-transform duration-300 hover:-translate-y-1"
+          className="rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-6"
         >
           <div className="font-[family-name:var(--font-heading)] text-3xl font-semibold text-white md:text-4xl">
             <AnimatedValue

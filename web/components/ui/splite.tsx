@@ -14,20 +14,22 @@ function SplineCanvas({ scene, className }: SplineSceneProps) {
   const [ready, setReady] = useState(false)
 
   return (
-    <div className={cn('relative h-full w-full bg-transparent', className)}>
+    <div className={cn('relative h-full w-full bg-[#020617]', className)}>
       {!ready && (
-        <div className="absolute inset-0 z-[1] flex items-center justify-center bg-[#020617]">
+        <div className="pointer-events-none absolute inset-0 z-[1] flex items-center justify-center">
           <span className="loader" />
         </div>
       )}
-      <div
+      <Spline
+        scene={scene}
+        // Continuous render so look-at / follow stays smooth with the cursor
+        renderOnDemand={false}
+        onLoad={() => setReady(true)}
         className={cn(
-          'h-full w-full transition-opacity duration-700',
+          'h-full w-full transition-opacity duration-500',
           ready ? 'opacity-100' : 'opacity-0'
         )}
-      >
-        <Spline scene={scene} onLoad={() => setReady(true)} className="h-full w-full" />
-      </div>
+      />
     </div>
   )
 }
