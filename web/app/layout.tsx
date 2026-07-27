@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Archivo, Inter, IBM_Plex_Mono } from 'next/font/google'
-import Link from 'next/link'
+import { SiteHeader } from '@/components/site-header'
+import { SiteFooter } from '@/components/site-footer'
 import './globals.css'
 
 const archivo = Archivo({
@@ -33,39 +34,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`${archivo.variable} ${inter.variable} ${plexMono.variable} ${inter.className} antialiased`}>
-        <header className="fixed top-4 right-0 left-0 z-50 px-4">
-          <div className="mx-auto flex max-w-6xl items-center justify-between rounded-full border border-white/10 bg-[#07111f]/70 px-5 py-3 text-sm text-slate-100 shadow-[0_18px_50px_rgba(5,15,40,0.35)] backdrop-blur-xl">
-            <Link href="/" className={`${archivo.className} text-base font-semibold tracking-tight`}>
-              Beta Works
-            </Link>
-            <nav className="hidden items-center gap-6 text-slate-300 md:flex">
-              <Link href="/" className="transition-colors hover:text-white">
-                Home
-              </Link>
-              <Link href="/services" className="transition-colors hover:text-white">
-                Services
-              </Link>
-              <Link href="/portfolio" className="transition-colors hover:text-white">
-                Work
-              </Link>
-              <Link href="/about" className="transition-colors hover:text-white">
-                About
-              </Link>
-              <Link href="/contact" className="transition-colors hover:text-white">
-                Contact
-              </Link>
-            </nav>
-            <Link
-              href="/contact"
-              className="rounded-full bg-gradient-to-r from-blue-500 to-sky-400 px-4 py-2 text-xs font-semibold text-slate-950 shadow-[0_10px_30px_rgba(37,99,235,0.35)]"
-            >
-              Start a project
-            </Link>
-          </div>
-        </header>
+    <html lang="en" className="dark">
+      <body
+        className={`${archivo.variable} ${inter.variable} ${plexMono.variable} ${inter.className} min-h-svh bg-[#020617] text-slate-100 antialiased`}
+      >
+        <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   )
