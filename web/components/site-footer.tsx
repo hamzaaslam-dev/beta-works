@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { BrandLogo } from '@/components/brand-logo'
 import { site, services } from '@/lib/content'
 
 export function SiteFooter() {
@@ -8,9 +9,7 @@ export function SiteFooter() {
     <footer className="border-t border-white/10 bg-[#030712] text-slate-300">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-4 md:px-6">
         <div className="md:col-span-1">
-          <Link href="/" className="font-[family-name:var(--font-heading)] text-lg font-semibold text-white">
-            Beta Works
-          </Link>
+          <BrandLogo variant="lockup" size="md" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">{site.tagline}</p>
         </div>
 
@@ -67,9 +66,7 @@ export function SiteFooter() {
       </div>
 
       <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 border-t border-white/10 px-4 py-6 text-sm text-slate-500 sm:flex-row sm:items-center md:px-6">
-        <span>
-          © {year} Beta Works. All rights reserved.
-        </span>
+        <span>© {year} Beta Works. All rights reserved.</span>
         <a
           href={site.linkedin}
           target="_blank"

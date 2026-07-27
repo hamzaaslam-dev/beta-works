@@ -26,6 +26,22 @@ export const metadata: Metadata = {
   title: 'Beta Works — Engineering The Future Of Business',
   description:
     'Beta Works is a senior digital studio shipping web, mobile, Shopify, AI/ML, agentic systems, automations and brand experiences.',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/brand/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/brand/favicon-48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/brand/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [{ url: '/brand/apple-touch-icon.png', sizes: '180x180' }],
+    shortcut: ['/favicon.ico'],
+  },
+  openGraph: {
+    title: 'Beta Works — Engineering The Future Of Business',
+    description:
+      'Beta Works is a senior digital studio shipping web, mobile, Shopify, AI/ML, agentic systems, automations and brand experiences.',
+    images: [{ url: '/brand/logo.png', width: 195, height: 134, alt: 'Beta Works' }],
+  },
 }
 
 export default function RootLayout({
