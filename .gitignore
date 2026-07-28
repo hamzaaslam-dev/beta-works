@@ -4,6 +4,7 @@ web/node_modules/
 
 # Next.js
 web/.next/
+web/.next-dev/
 web/out/
 
 # Vercel
