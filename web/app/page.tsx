@@ -86,11 +86,11 @@ export default function HomePage() {
           />
         </Reveal>
 
-        <RevealStagger className="flex flex-wrap items-stretch justify-center gap-6 md:gap-8">
+        <RevealStagger className="grid grid-cols-1 items-stretch justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 md:gap-8">
           {cards.map((service, index) => {
             const Icon = icons[service.id as keyof typeof icons]
             return (
-              <RevealItem key={service.id} index={index} className="w-full max-w-[350px]">
+              <RevealItem key={service.id} index={index} className="flex h-full w-full max-w-[350px]">
                 <HighlightCard
                   href={`/services#${service.id}`}
                   title={service.name}

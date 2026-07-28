@@ -23,13 +23,13 @@ const HighlightCard: FC<HighlightCardProps> = ({
   const card = (
     <div
       className={cn(
-        'group h-full cursor-pointer transform transition-all duration-500 hover:scale-[1.03] hover:-rotate-1',
+        'group flex h-full min-h-[420px] w-full cursor-pointer transform transition-all duration-500 hover:scale-[1.03] hover:-rotate-1',
         className
       )}
     >
       <Card
         className={cn(
-          'relative w-full overflow-hidden rounded-2xl border border-white/10',
+          'relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-white/10',
           'bg-gradient-to-br from-[#020617] via-[#07111f] to-[#0b1b3a]',
           'text-white shadow-2xl backdrop-blur-xl',
           'hover:border-sky-300/35 hover:shadow-[0_24px_60px_rgba(14,165,233,0.12)]'
@@ -43,8 +43,8 @@ const HighlightCard: FC<HighlightCardProps> = ({
           <div className="absolute inset-0 translate-x-full transform bg-gradient-to-r from-transparent via-sky-200/10 to-transparent transition-transform duration-1000 -skew-x-12 group-hover:translate-x-[-200%]" />
         </div>
 
-        <div className="relative z-10 flex flex-col items-center p-8 text-center">
-          <div className="relative mb-6">
+        <div className="relative z-10 flex h-full flex-col items-center p-8 text-center">
+          <div className="relative mb-6 shrink-0">
             <div className="absolute inset-0 animate-pulse rounded-full border border-sky-300/25" />
             <div className="absolute inset-0 rounded-full border border-sky-300/10" />
 
@@ -55,11 +55,11 @@ const HighlightCard: FC<HighlightCardProps> = ({
             </div>
           </div>
 
-          <h3 className="mb-4 bg-gradient-to-r from-white via-sky-100 to-white bg-clip-text font-[family-name:var(--font-heading)] text-2xl font-bold text-transparent transition-transform duration-300 group-hover:scale-105 md:text-[1.65rem]">
+          <h3 className="mb-4 shrink-0 bg-gradient-to-r from-white via-sky-100 to-white bg-clip-text font-[family-name:var(--font-heading)] text-2xl font-bold text-transparent transition-transform duration-300 group-hover:scale-105 md:text-[1.65rem]">
             {title}
           </h3>
 
-          <div className="max-w-sm space-y-1">
+          <div className="flex min-h-[5.5rem] w-full max-w-sm flex-1 flex-col justify-start space-y-1">
             {description.map((line, idx) => (
               <p
                 key={idx}
@@ -70,18 +70,19 @@ const HighlightCard: FC<HighlightCardProps> = ({
             ))}
           </div>
 
-          <div className="mt-6 h-0.5 w-1/3 rounded-full bg-gradient-to-r from-transparent via-sky-300 to-transparent transition-all duration-500 group-hover:h-1 group-hover:w-1/2" />
-
-          <div className="mt-4 flex space-x-2 opacity-50 transition-opacity duration-300 group-hover:opacity-100">
-            <div className="h-2 w-2 animate-bounce rounded-full bg-sky-300" />
-            <div
-              className="h-2 w-2 animate-bounce rounded-full bg-sky-300"
-              style={{ animationDelay: '0.1s' }}
-            />
-            <div
-              className="h-2 w-2 animate-bounce rounded-full bg-blue-400"
-              style={{ animationDelay: '0.2s' }}
-            />
+          <div className="mt-auto flex w-full flex-col items-center pt-6">
+            <div className="h-0.5 w-1/3 rounded-full bg-gradient-to-r from-transparent via-sky-300 to-transparent transition-all duration-500 group-hover:h-1 group-hover:w-1/2" />
+            <div className="mt-4 flex space-x-2 opacity-50 transition-opacity duration-300 group-hover:opacity-100">
+              <div className="h-2 w-2 animate-bounce rounded-full bg-sky-300" />
+              <div
+                className="h-2 w-2 animate-bounce rounded-full bg-sky-300"
+                style={{ animationDelay: '0.1s' }}
+              />
+              <div
+                className="h-2 w-2 animate-bounce rounded-full bg-blue-400"
+                style={{ animationDelay: '0.2s' }}
+              />
+            </div>
           </div>
         </div>
 
@@ -94,7 +95,10 @@ const HighlightCard: FC<HighlightCardProps> = ({
   if (!href) return card
 
   return (
-    <Link href={href} className="block h-full outline-none focus-visible:ring-2 focus-visible:ring-sky-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#020617]">
+    <Link
+      href={href}
+      className="flex h-full w-full outline-none focus-visible:ring-2 focus-visible:ring-sky-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#020617]"
+    >
       {card}
     </Link>
   )
