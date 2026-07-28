@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import { ArrowRight, Globe, Smartphone, ShoppingBag, Workflow, Palette } from 'lucide-react'
+import { Globe, Smartphone, ShoppingBag, Workflow, Palette } from 'lucide-react'
 import { SplineSceneBasic } from '@/components/ui/spline-scene-basic'
+import HighlightCard from '@/components/ui/highlight-card'
 import { Marquee } from '@/components/marquee'
 import { SectionHeading } from '@/components/section-heading'
 import { CtaBand } from '@/components/cta-band'
@@ -44,6 +44,23 @@ const process = [
   },
 ]
 
+function splitSummary(summary: string): string[] {
+  const parts = summary
+    .split(/[—–-]/)
+    .map((p) => p.trim())
+    .filter(Boolean)
+  if (parts.length >= 2) {
+    return [parts[0] + (summary.includes('—') || summary.includes('–') ? '.' : ''), ...parts.slice(1)]
+  }
+  // Fall back: soft-wrap into ~2 lines by sentence-ish chunks
+  const mid = Math.ceil(summary.length / 2)
+  const breakAt = summary.lastIndexOf(' ', mid)
+  if (breakAt > 20) {
+    return [summary.slice(0, breakAt).trim(), summary.slice(breakAt).trim()]
+  }
+  return [summary]
+}
+
 export default function HomePage() {
   const cards = homeOrder.map((id) => services.find((s) => s.id === id)!).filter(Boolean)
 
@@ -69,33 +86,17 @@ export default function HomePage() {
           />
         </Reveal>
 
-        <RevealStagger className="grid gap-4 md:grid-cols-6">
+        <RevealStagger className="flex flex-wrap items-stretch justify-center gap-6 md:gap-8">
           {cards.map((service, index) => {
             const Icon = icons[service.id as keyof typeof icons]
-            const wide = index < 2 || index === 4
             return (
-              <RevealItem
-                key={service.id}
-                index={index}
-                className={wide ? 'md:col-span-3' : 'md:col-span-2'}
-              >
-                <Link
+              <RevealItem key={service.id} index={index} className="w-full max-w-[350px]">
+                <HighlightCard
                   href={`/services#${service.id}`}
-                  className="group relative block h-full overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.03] p-6 transition-colors duration-200 hover:border-sky-300/35 hover:bg-white/[0.055]"
-                >
-                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl border border-sky-300/20 bg-sky-400/10 text-sky-200">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <h3 className="font-[family-name:var(--font-heading)] text-xl font-semibold text-white">
-                        {service.name}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-slate-400">{service.summary}</p>
-                    </div>
-                    <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-slate-500 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-sky-300" />
-                  </div>
-                </Link>
+                  title={service.name}
+                  description={splitSummary(service.summary)}
+                  icon={<Icon className="h-8 w-8 text-sky-200" />}
+                />
               </RevealItem>
             )
           })}
