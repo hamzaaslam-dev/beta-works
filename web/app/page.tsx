@@ -1,24 +1,21 @@
 import Link from 'next/link'
-import { ArrowRight, Globe, Bot, Smartphone, Brain, ShoppingBag, Workflow, Palette } from 'lucide-react'
+import { ArrowRight, Globe, Smartphone, ShoppingBag, Workflow, Palette } from 'lucide-react'
 import { SplineSceneBasic } from '@/components/ui/spline-scene-basic'
 import { Marquee } from '@/components/marquee'
 import { SectionHeading } from '@/components/section-heading'
-import { StatStrip } from '@/components/stat-strip'
 import { CtaBand } from '@/components/cta-band'
 import { Reveal, RevealItem, RevealStagger } from '@/components/reveal'
 import { services } from '@/lib/content'
 
 const icons = {
   web: Globe,
-  agentic: Bot,
   mobile: Smartphone,
-  aiml: Brain,
   shopify: ShoppingBag,
   automation: Workflow,
   design: Palette,
 } as const
 
-const homeOrder = ['web', 'agentic', 'mobile', 'aiml', 'shopify', 'automation', 'design'] as const
+const homeOrder = ['web', 'mobile', 'shopify', 'automation', 'design'] as const
 
 const process = [
   {
@@ -68,14 +65,14 @@ export default function HomePage() {
                 </span>
               </>
             }
-            lead="Seven deep capabilities, one connected team. Whether you need a flagship product or a focused sprint, we plug in and ship outcomes — not deliverables."
+            lead="Five deep capabilities, one connected team. Whether you need a flagship product or a focused sprint, we plug in and ship outcomes — not deliverables."
           />
         </Reveal>
 
         <RevealStagger className="grid gap-4 md:grid-cols-6">
           {cards.map((service, index) => {
             const Icon = icons[service.id as keyof typeof icons]
-            const wide = index === 0 || index === 1 || index >= 5
+            const wide = index < 2 || index === 4
             return (
               <RevealItem
                 key={service.id}
@@ -103,19 +100,6 @@ export default function HomePage() {
             )
           })}
         </RevealStagger>
-      </section>
-
-      <section className="relative mx-auto max-w-6xl px-4 py-12 md:px-6">
-        <Reveal>
-          <StatStrip
-            stats={[
-              { value: 98, suffix: '%', label: 'Client retention' },
-              { value: 4.9, decimals: 1, suffix: '/5', label: 'Average review score' },
-              { value: 24, suffix: 'h', label: 'Average response time' },
-              { value: 7, label: 'Core capabilities' },
-            ]}
-          />
-        </Reveal>
       </section>
 
       <section className="relative mx-auto max-w-6xl px-4 py-24 md:px-6">

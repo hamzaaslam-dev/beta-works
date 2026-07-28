@@ -25,7 +25,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: 'Beta Works — Engineering The Future Of Business',
   description:
-    'Beta Works is a senior digital studio shipping web, mobile, Shopify, AI/ML, agentic systems, automations and brand experiences.',
+    'Beta Works is a senior digital studio shipping web, mobile, Shopify, automations and brand experiences.',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Beta Works — Engineering The Future Of Business',
     description:
-      'Beta Works is a senior digital studio shipping web, mobile, Shopify, AI/ML, agentic systems, automations and brand experiences.',
+      'Beta Works is a senior digital studio shipping web, mobile, Shopify, automations and brand experiences.',
     images: [{ url: '/brand/logo.png', width: 855, height: 586, alt: 'Beta Works' }],
   },
 }

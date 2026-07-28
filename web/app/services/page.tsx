@@ -6,7 +6,7 @@ import { faqs, services } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'Services — Beta Works',
-  description: 'Seven disciplines, one senior team — web, mobile, Shopify, automation, AI/ML, agentic systems and brand.',
+  description: 'Five disciplines, one senior team — web, mobile, Shopify, automation and brand.',
 }
 
 export default function ServicesPage() {
@@ -15,7 +15,7 @@ export default function ServicesPage() {
       <section className="mx-auto max-w-6xl px-4 pb-10 md:px-6">
         <SectionHeading
           eyebrow="Services"
-          title="Seven disciplines, one team."
+          title="Five disciplines, one team."
           lead="Deep specialists who still ship as one studio — so your product, platform and brand move together."
         />
       </section>

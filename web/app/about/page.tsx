@@ -1,11 +1,10 @@
 import type { Metadata } from 'next'
 import { SectionHeading } from '@/components/section-heading'
-import { StatStrip } from '@/components/stat-strip'
 import { CtaBand } from '@/components/cta-band'
 
 export const metadata: Metadata = {
   title: 'About — Beta Works',
-  description: 'A distributed team of senior designers, engineers and AI specialists who refuse to wait.',
+  description: 'A distributed team of senior designers and engineers who refuse to wait.',
 }
 
 const values = [
@@ -22,12 +21,12 @@ const values = [
   {
     num: '03',
     title: 'Radical transparency',
-    body: 'Shared Linear, shared Slack, weekly demos, open pricing. You always know what\'s happening and why.',
+    body: "Shared Linear, shared Slack, weekly demos, open pricing. You always know what's happening and why.",
   },
   {
     num: '04',
     title: 'Built to hand off',
-    body: 'Clean code, full documentation, knowledge transfer. You keep the keys — we\'re your force multiplier, not your dependency.',
+    body: "Clean code, full documentation, knowledge transfer. You keep the keys — we're your force multiplier, not your dependency.",
   },
   {
     num: '05',
@@ -36,8 +35,8 @@ const values = [
   },
   {
     num: '06',
-    title: 'AI-native from day one',
-    body: 'We use AI to ship 3–5× faster, and weave it into the products we build so you compound the same advantage.',
+    title: 'Ship quietly, ship fast',
+    body: 'Less theatre, more delivery. We favour small senior teams, short cycles and products that hold up in production.',
   },
 ]
 
@@ -48,7 +47,7 @@ export default function AboutPage() {
         <SectionHeading
           eyebrow="About"
           title="A studio for builders who refuse to wait."
-          lead="Beta Works is a distributed team of senior designers, engineers and AI specialists."
+          lead="Beta Works is a distributed team of senior designers and engineers."
         />
       </section>
 
@@ -59,8 +58,8 @@ export default function AboutPage() {
               Built by operators, for operators.
             </h2>
             <p className="mt-5 text-base leading-relaxed text-slate-400">
-              We started Beta Works after years of shipping inside fast-growth startups and enterprise R&D labs. We were
-              tired of watching great ideas die in Jira tickets, committees and six-month timelines.
+              We started Beta Works after years of shipping inside fast-growth startups and product teams. We were tired
+              of watching great ideas die in Jira tickets, committees and six-month timelines.
             </p>
             <p className="mt-4 text-base leading-relaxed text-slate-400">
               So we built the studio we wished existed: small, senior, opinionated. Every project led by someone who has
@@ -78,7 +77,7 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pb-16 md:px-6">
-        <SectionHeading eyebrow="What we stand for" title="Four principles, applied relentlessly." />
+        <SectionHeading eyebrow="What we stand for" title="Principles we apply relentlessly." />
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {values.map((value) => (
             <div key={value.num} className="rounded-[24px] border border-white/10 bg-white/[0.03] p-6">
@@ -88,22 +87,6 @@ export default function AboutPage() {
             </div>
           ))}
         </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 pb-10 md:px-6">
-        <SectionHeading
-          eyebrow="The people"
-          title="Senior talent. Everywhere."
-          lead="A small crew of specialists operating across four continents, assembled per-project around your goals."
-        />
-        <StatStrip
-          stats={[
-            { value: 120, suffix: '+', label: 'Projects shipped' },
-            { value: 32, suffix: '+', label: 'Experts in the network' },
-            { value: 18, suffix: '+', label: 'Countries served' },
-            { value: 4.9, decimals: 1, suffix: '/5', label: 'Client satisfaction' },
-          ]}
-        />
       </section>
 
       <CtaBand

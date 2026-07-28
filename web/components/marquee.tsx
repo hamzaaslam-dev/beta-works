@@ -3,8 +3,6 @@ const items = [
   'Mobile Apps',
   'Shopify',
   'Automations',
-  'AI & Machine Learning',
-  'Agentic AI',
   'Graphic Design',
   'UI / UX',
   'Brand Identity',

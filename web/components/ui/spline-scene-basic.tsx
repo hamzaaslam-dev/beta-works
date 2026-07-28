@@ -51,7 +51,7 @@ export function SplineSceneBasic() {
             className="hero-fade mt-5 max-w-lg text-base leading-relaxed text-slate-300 md:text-lg"
             style={{ ['--hero-delay' as string]: '180ms' }}
           >
-            Beta Works ships web, mobile, commerce, automation and agentic systems for teams that
+            Beta Works ships web, mobile, commerce, automation and brand experiences for teams that
             need senior judgment — not agency theater.
           </p>
 
@@ -80,7 +80,7 @@ export function SplineSceneBasic() {
           >
             {[
               ['Response', '24h'],
-              ['Core lanes', '07'],
+              ['Core lanes', '05'],
               ['Mode', 'Quietly fast'],
             ].map(([k, v]) => (
               <div key={k}>

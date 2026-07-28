@@ -98,8 +98,6 @@ export function ContactForm() {
           <option>Mobile Development</option>
           <option>Shopify Development</option>
           <option>Automation &amp; Ops</option>
-          <option>AI / ML Solutions</option>
-          <option>Agentic AI</option>
           <option>Graphic &amp; Brand Design</option>
           <option>A full product launch (multiple)</option>
         </select>
