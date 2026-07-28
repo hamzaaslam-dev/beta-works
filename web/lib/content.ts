@@ -135,7 +135,7 @@ export const projects: PortfolioProject[] = [
     tag: 'E-commerce · Brand',
     description:
       'Premium lighting brand storefront for Pakistan’s Orient Lighting — product catalog, collections and contact-led commerce.',
-    url: 'https://orientlighting.com.pk/',
+    url: 'https://orient-lightning-gamma.vercel.app/',
   },
   {
     slug: 'hissedari',
